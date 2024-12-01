@@ -1,0 +1,218 @@
+:root {
+  --BrightBlue: hsl(220, 98%, 61%);
+  --CheckBackground: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --VeryLightGray: hsl(0, 0%, 98%);
+  --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+  --LightGrayishBlue: hsl(233, 11%, 84%);
+  --DarkGrayishBlue: hsl(236, 9%, 61%);
+  --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+  --VeryDarkBlue: hsl(235, 21%, 11%);
+  --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+  --LightGrayishBlue: hsl(234, 39%, 85%);
+  --LightGrayishBlue: hsl(236, 33%, 92%);
+  --DarkGrayishBlue: hsl(234, 11%, 52%);
+  --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
+  --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+.container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header {
+  background-image: url(./images/bg-mobile-light.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+}
+.logo {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  align-items: center;
+}
+.logo h1 {
+  color: var(--VeryLightGray);
+  font-size: 3rem;
+}
+.inputContainer {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--VeryLightGray);
+  padding: 0 0 0 2rem;
+  gap: 1rem;
+  border-radius: 0.8rem;
+}
+
+.inputContainer button {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--DarkGrayishBlue);
+  background: none;
+  border-radius: 5rem;
+  cursor: pointer;
+}
+input {
+  width: 100%;
+  height: 4.8rem;
+  border: none;
+  color: var(--VeryDarkBlue);
+  background: none;
+  padding-left: 1rem;
+}
+
+main {
+  background-color: var(--VeryLightGrayishBlue);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 4rem;
+}
+.listContainer {
+  width: 80vw;
+  background-color: var(--VeryLightGray);
+  border-top-right-radius: 0.8rem;
+  border-top-left-radius: 0.8rem;
+}
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  height: 4.8rem;
+  padding: 0 2rem;
+  border-bottom: 1px solid var(--VeryDarkGrayishBlue);
+  font-size: 1.6rem;
+  /* background-color: rgba(0, 0, 0, 0.171); */
+}
+.checked {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--DarkGrayishBlue);
+  border-radius: 5rem;
+  cursor: pointer;
+}
+.checked {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--DarkGrayishBlue);
+  border-radius: 5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.remove {
+  cursor: pointer;
+}
+
+.panel {
+  width: 80%;
+  background-color: var(--VeryLightGray);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 4.8rem;
+  gap: 2rem;
+}
+.panel a {
+  text-decoration: none;
+  /* color: var(--DarkGrayishBlue); */
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  opacity: 0.4;
+}
+.color {
+  /* color: var(--BrightBlue); */
+  color: var(--BrightBlue);
+}
+
+.inactive {
+  text-decoration: line-through;
+  color: var(--VeryDarkGrayishBlue);
+  /* background-color: var(--VeryDarkGrayishBlue); */
+  opacity: 0.2;
+}
+.checkedInactive {
+  background-color: var(--BrightBlue);
+  border: none;
+}
+
+.remove img,
+.checked img,
+.checkedInactive img {
+  pointer-events: none;
+}
+.hide {
+  opacity: 0;
+  animation: hide-animation 1s ease-in-out forwards;
+}
+
+@keyframes hide-animation {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-5px);
+  }
+  40% {
+    transform: translateY(0px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+  80% {
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  header {
+    background-image: url(./images/bg-desktop-light.jpg);
+    width: 100vw;
+    height: 50vh;
+  }
+  .logo {
+    width: 60%;
+  }
+
+  .inputContainer {
+    width: 60%;
+  }
+  .listContainer {
+    width: 60%;
+  }
+  .panel {
+    width: 60%;
+  }
+}
