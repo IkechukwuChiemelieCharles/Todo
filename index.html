@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./todo.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
     <title>Todo List</title>
   </head>
   <body>
@@ -11,7 +18,13 @@
       <header>
         <div class="logo">
           <h1>Todo</h1>
-          <img src="./images/icon-sun.svg" alt="" />
+          <img id="darkToggle" src="./images/icon-moon.svg" alt="" />
+          <img
+            id="lightToggle"
+            class="hidden"
+            src="./images/icon-sun.svg"
+            alt=""
+          />
         </div>
         <form class="inputContainer">
           <button id="btn"></button>
@@ -24,7 +37,12 @@
         </form>
       </header>
       <main>
-        <ul class="listContainer"></ul>
+        <ul class="listContainer">
+          <!-- <div class="panel2">
+            <a href="#" class="itemCount"> items left</a>
+            <a href="#" class="completed"> Clear Completed</a>
+          </div> -->
+        </ul>
 
         <div class="panel">
           <a href="#" class="all">All</a>

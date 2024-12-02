@@ -8,6 +8,16 @@ const all = document.querySelector(".all");
 const active = document.querySelector(".active");
 const completed = document.querySelector(".completed");
 
+const darkToggle = document.querySelector("#darkToggle");
+const lightToggle = document.querySelector("#lightToggle");
+
+const bodyDark = document.getElementsByTagName("body");
+
+// darkMode
+
+const inputContainer = document.querySelector(".inputContainer");
+const body = document.querySelector("body");
+
 btn.addEventListener("click", displayTodo);
 
 function displayTodo(e) {
@@ -46,7 +56,7 @@ function displayTodo(e) {
   listItem.append(icon);
 
   //appended the list item into the list container
-  listContainer.append(listItem);
+  listContainer.prepend(listItem);
 }
 
 listContainer.addEventListener("click", deleteCheck);
@@ -143,4 +153,19 @@ function filter(e) {
         }
     }
   });
+}
+
+darkToggle.addEventListener("click", darkMode);
+lightToggle.addEventListener("click", lightMode);
+
+function darkMode() {
+  console.log("het");
+  body.classList.add("theme2");
+  darkToggle.classList.add("hidden");
+  lightToggle.classList.remove("hidden");
+}
+function lightMode() {
+  darkToggle.classList.remove("hidden");
+  lightToggle.classList.add("hidden");
+  body.classList.remove("theme2");
 }
