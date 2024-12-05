@@ -113,6 +113,12 @@ main {
   align-items: center;
   gap: 4rem;
 }
+.div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .listContainer {
   width: 80vw;
   background-color: var(--VeryLightGray);
@@ -161,7 +167,7 @@ main {
   gap: 2rem;
 }
 .panel2 {
-  /* width: 80%; */
+  width: 100%;
   background: var(--VeryLightGray);
   /* background: var(--CheckBackground); */
   justify-content: space-around;
@@ -234,8 +240,17 @@ main {
 .hidden {
   display: none;
 }
+#desk {
+  display: none;
+}
 
 @media screen and (min-width: 1024px) {
+  #mobile {
+    display: none;
+  }
+  #desk {
+    display: flex;
+  }
   header {
     background-image: var(--background-image);
     width: 100vw;
@@ -244,12 +259,15 @@ main {
   .logo {
     width: 60%;
   }
-
+  .div {
+    width: 60%;
+    border: 1px solid red;
+  }
   .inputContainer {
     width: 60%;
   }
   .listContainer {
-    width: 60%;
+    width: 100%;
   }
   .panel {
     width: 60%;

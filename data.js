@@ -4,9 +4,9 @@ const input = document.querySelector("#input");
 const listContainer = document.querySelector(".listContainer");
 const btn = document.querySelector("#btn");
 
-const all = document.querySelector(".all");
-const active = document.querySelector(".active");
-const completed = document.querySelector(".completed");
+const all = document.querySelectorAll(".all");
+const active = document.querySelectorAll(".active");
+const completed = document.querySelectorAll(".completed");
 
 const darkToggle = document.querySelector("#darkToggle");
 const lightToggle = document.querySelector("#lightToggle");
@@ -66,10 +66,8 @@ function displayTodo(e) {
   // itemCount.textContent = "Hey";
   // console.log(listContainer.length);
   const lengths = (itemCount.textContent = `${
-    listContainer.children.length - 1
-  }   ${listContainer.children.length === 2 ? "item" : "items"}  left`);
-
-  // console.log(.children.length - 1);
+    listContainer.children.length
+  }   ${listContainer.children.length === 1 ? "item" : "items"}  left`);
 }
 
 listContainer.addEventListener("click", deleteCheck);
@@ -84,8 +82,8 @@ function deleteCheck(e) {
       todo.remove();
     });
 
-    itemCount.textContent = `${listContainer.children.length - 2} ${
-      listContainer.children.length === 3 ? "item" : "items"
+    itemCount.textContent = `${listContainer.children.length - 1} ${
+      listContainer.children.length === 2 ? "item" : "items"
     }  left`;
   }
 
@@ -112,37 +110,51 @@ function deleteCheck(e) {
     item.appendChild(mark);
   }
 }
-
-all.addEventListener("click", filter);
-completed.addEventListener("click", filter);
-active.addEventListener("click", filter);
+for (const item of all) {
+  item.addEventListener("click", filter);
+}
+for (const item of completed) {
+  item.addEventListener("click", filter);
+}
+for (const item of active) {
+  item.addEventListener("click", filter);
+}
 deleteCompleted.addEventListener("click", filter);
 
 function filter(e) {
-  const todos = listContainer.childNodes;
+  const todos = listContainer.children;
 
-  todos.forEach(function (todo) {
+  for (const todo of todos) {
     switch (e.target.innerText) {
       case "All":
         e.target.style.opacity = 1;
-        active.style.opacity = 0.4;
-        completed.style.opacity = 0.4;
+        for (const item of active) {
+          item.style.opacity = 0.4;
+          item.classList.remove("color");
+        }
+        for (const item of completed) {
+          item.style.opacity = 0.4;
+          item.classList.remove("color");
+        }
 
         e.target.classList.add("color");
-        active.classList.remove("color");
-        completed.classList.remove("color");
 
         todo.style.display = "flex";
 
         break;
 
       case "Active":
-        all.classList.remove("color");
-        completed.classList.remove("color");
+        for (const item of all) {
+          item.classList.remove("color");
+          item.style.opacity = 0.4;
+        }
+        for (const item of completed) {
+          item.classList.remove("color");
+          item.style.opacity = 0.4;
+        }
+
         e.target.classList.add("color");
         e.target.style.opacity = 1;
-        all.style.opacity = 0.4;
-        completed.style.opacity = 0.4;
 
         if (todo.classList.contains("inactive")) {
           todo.style.display = "none";
@@ -152,13 +164,17 @@ function filter(e) {
 
         break;
       case "Completed":
-        active.classList.remove("color");
-        all.classList.remove("color");
+        for (const item of active) {
+          item.classList.remove("color");
+          item.style.opacity = 0.4;
+        }
+        for (const item of all) {
+          item.classList.remove("color");
+          item.style.opacity = 0.4;
+        }
         e.target.classList.add("color");
 
         e.target.style.opacity = 1;
-        all.style.opacity = 0.4;
-        active.style.opacity = 0.4;
         if (todo.classList.contains("inactive")) {
           todo.style.display = "flex";
         } else {
@@ -167,29 +183,22 @@ function filter(e) {
 
         break;
       case "Clear Completed":
-        if (todo.classList.contains("inactive")) {
-          console.log(todo);
+        const toDelete = [];
 
+        for (const todo of todos) {
+          if (todo.classList.contains("inactive")) {
+            toDelete.push(todo); // Add to array if it has the class "inactive"
+          }
+        }
+
+        for (const todo of toDelete) {
           todo.remove();
-          itemCount.textContent = `${listContainer.children.length - 1} ${
-            listContainer.children.length === 2 ? "item" : "items"
+          itemCount.textContent = `${listContainer.children.length} ${
+            listContainer.children.length === 1 ? "item" : "items"
           }  left`;
         }
-      //     console.log("kinos");
-      //   } else {
-      //     // todo.style.display = "flex";
-      //   }
-
-      // for (const item of todos) {
-      //   if (item.classList.contains("inactive")) {
-      //     item.remove();
-      //     console.log("kinos");
-      //   } else {
-      //     // todo.style.display = "flex";
-      //   }
-      // }
     }
-  });
+  }
 }
 
 darkToggle.addEventListener("click", darkMode);
@@ -205,35 +214,3 @@ function lightMode() {
   lightToggle.classList.add("hidden");
   body.classList.remove("theme2");
 }
-
-// deleteCompleted.addEventListener("click", deleteAllCompleted);
-
-// function deleteAllCompleted(e) {
-//   const comp = listContainer.childNodes;
-
-//   console.log(comp);
-
-// comp.forEach(function (comps) {
-//   if (e.target.classList) {
-//   }
-// });
-
-// if (compChild.classList.contains("inactive")) {
-// }
-
-// function filter(e) {
-// const todos = listContainer.childNodes;
-
-// todos.forEach(function (todo) {
-//   switch (e.target.innerText) {
-//     case "All":
-//       e.target.style.opacity = 1;
-//       active.style.opacity = 0.4;
-//       completed.style.opacity = 0.4;
-
-//       e.target.classList.add("color");
-//       active.classList.remove("color");
-//       completed.classList.remove("color");
-
-//       todo.style.display = "flex";
-//       console.log(e.target);
